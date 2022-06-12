@@ -1,0 +1,21 @@
+{
+  "name": "bridge_ibmmq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "compile": "tsc",
+    "copy": "copyfiles -f ./src/package-lock.json ./src/package.json ./dist/nodejs/node_modules/bridge_ibmmq",
+    "install-src-dependencies": "cd ./src && npm install && npm ci --only=prod",
+    "install-dist-dependencies": "cd ./dist/nodejs/node_modules/bridge_ibmmq && npm ci --only=prod",
+    "build": "npm run install-src-dependencies && npm ci --only=prod && npm run compile && npm run copy && npm run install-dist-dependencies"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^15.12.5",
+    "copyfiles": "^2.4.1",
+    "ibmmq": "^0.9.17",
+    "typescript": "^4.3.4"
+  }
+}

@@ -1,0 +1,28 @@
+service: bridge-ibmmq-layer
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-2'}
+  lambdaHashingVersion: 20201221
+  stackName: bridge-ibmmq-layer-stack
+
+package:
+  individually: true
+
+layers:
+  BridgeIbmmq:
+    path: src/layers/bridge_ibmmq/dist
+    name: bridge-ibmmq-lambda-layer
+    description: Layer que contém as classes necessárias em Typescript para utilização nas chamadas ao IBMMQ 7.x/8.x com emulação do comportamento da API REST do IBM MQ 9.2.2
+    compatibleRuntimes:
+      - nodejs14.x
+    package:
+
+      patterns:
+        - "!./node_modules/**"
+        - "!./src/**"
+        - "./src/layers/bridge_ibmmq/dist/**"

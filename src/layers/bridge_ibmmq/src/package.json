@@ -1,0 +1,11 @@
+{
+  "name": "bridge_ibmmq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ibmmq": "^0.9.17"
+  }
+}
